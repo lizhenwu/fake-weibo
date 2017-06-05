@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  include menu.pug
+  h2=locals.user.name
+  form(method='post',id='postMsg')
+    textarea(maxlength=200,form='postMsg',required)
+    p
+      input(type='submit',value='tweet')

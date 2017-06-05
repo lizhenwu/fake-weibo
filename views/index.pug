@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  include menu.pug
+  h1= title
+  p Welcome to #{title}
+  each entry in entries
+    .entry
+      h3=entry.title
+      p=entry.msg
+      p Posted by #{entry.name}
