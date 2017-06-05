@@ -1,19 +1,20 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
+import express from 'express';
+import path from 'path';
+import favicon from 'serve-favicon';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser'; 
+import session from 'express-session';
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var register = require('./routes/register');
-var login = require('./routes/login');
-var messages = require('./lib/message');
-var user = require('./lib/user');
+import routes from './routes/index'
+import users from './routes/users';
+import register from './routes/register';
+import login from './routes/login';
+import messages from './lib/message';
+import user from './lib/user';
+import post from './routes/post';
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,9 +39,10 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/register',register);
 app.use('/login',login);
+app.use('/post',post);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next)=> {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -71,4 +73,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+export default app;

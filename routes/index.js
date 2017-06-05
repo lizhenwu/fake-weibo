@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var userMsg = require('../lib/entry');
+import userMsg from '../lib/entry';
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/users');
@@ -13,8 +13,9 @@ mongoose.connect('mongodb://localhost/users');
 router.get('/', function(req, res, next) {
   userMsg.find({},function(err,entries){
     res.render('index',{
-    title:'Express',
-    entries:entries
+    title:'Windmill',
+    entries:entries,
+    static:'index'
   });
   // db.close();
   });
